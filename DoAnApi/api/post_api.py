@@ -38,6 +38,9 @@ class PostListWithType(APIView, ApiBase):
     def get(self, request, type, *args, **kwargs):
         types = type.replace('-',' ')
         posts = self.get_post_with_tpye(types)
+        for post in posts:
+            images = Image.objects.get(post_id=post)
+            post.image = images.image
         serializer = ListPostSerializer(posts, many=True)
         return self.as_success(serializer.data)
 

@@ -33,6 +33,7 @@ class CreatePostSerializer(serializers.ModelSerializer):
 class ListPostSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(use_url=True)
 
+
     class Meta:
         model = Post
         fields = ('slug','user','title','price', 'area', 'district', 'province', 'description', 'image','created_at', 'updated_at')
